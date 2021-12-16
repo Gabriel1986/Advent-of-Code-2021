@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "D32rRLKZ6cTbCTNDu0nI1cgD6ur2W5U2RcheGTyg+9JvPeBjkjl8eamc+Z8TL91y8P/qnQCQcjA3OwlFBZCwRA==",
+  "success": true,
+  "projectFilePath": "C:\\Workspace-AdventOfCode\\2021\\AdventOfCode.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\MarkBracke\\.nuget\\packages\\fsharp.core\\6.0.1\\fsharp.core.6.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
