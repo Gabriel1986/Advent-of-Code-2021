@@ -34,24 +34,20 @@ type Node =
             if me.J > 0 then createNode (me.I, me.J - 1)
         ]
 
+//Had to use mutable collections as using immutable collections made this algorithm too slow :(
 let performShortestPathAlgorithm (maze: int[,], startNode: Node, goal: Node) =
     let openNodes = new PriorityQueue<Node, int> ()
-    let rec traverse (visitedNodes: Map<int * int, Node>) =
-        let minNode = openNodes.Dequeue()
+    let visitedNodes = new HashSet<int * int> ()
+    let mutable minNode = startNode
 
-        if minNode.IsSameNodeAs(goal) then
-            minNode.DistanceTraveled
-        else
-            let newVisitedNodes = visitedNodes |> Map.add (minNode.I, minNode.J) minNode
+    while not (minNode.IsSameNodeAs goal) do
+        visitedNodes.Add (minNode.I, minNode.J) |> ignore
+        for neighbour in minNode.Neighbours maze do
+            if (not (visitedNodes.Contains (neighbour.I, neighbour.J))) then
+                openNodes.Enqueue(neighbour, neighbour.Heuristic)
+        minNode <- openNodes.Dequeue()
 
-            for neighbour in minNode.Neighbours maze do
-                if (not (visitedNodes.ContainsKey (neighbour.I, neighbour.J))) then
-                    openNodes.Enqueue(neighbour, neighbour.Heuristic)
-
-            traverse (newVisitedNodes)
-
-    openNodes.Enqueue (startNode, 0)
-    traverse (Map.empty)
+    minNode.DistanceTraveled
 
 let private readInput () =
     let inputStrings =
