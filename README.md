@@ -1,7 +1,7 @@
 # Advent of Code 2021 solutions
 
 Wrote some solutions for Advent of Code 2021 (https://adventofcode.com/2021) in F#.
-Most turned out pretty ok'ish, aside from the Day 15 Part 2 solution, which is just pretty darn slow...
+Most turned out pretty ok'ish, aside from the Day 15 solutions, where I had to change the code to use mutable collections to bump the execution time from 12s to a more reasonable 2s.
 
 ## Run the code
 
