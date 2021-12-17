@@ -82,4 +82,4 @@ let part2 () =
     let maxJ = expandedMaze.GetUpperBound 1
 
     let shortestPath = performShortestPathAlgorithm (expandedMaze, Node.Create (0, 0, None, expandedMaze), Node.Create (maxI, maxJ, None, expandedMaze))
-    printfn "Day 14 - Part 2 - Shortest path weight: %i" shortestPath
+    printfn "Day 15 - Part 2 - Shortest path weight: %i" shortestPath
