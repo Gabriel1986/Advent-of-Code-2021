@@ -5,11 +5,11 @@ Most turned out pretty ok'ish, aside from the Day 15 Part 2 solution, which is j
 
 ## Run the code
 
-In a console, pick an option:
+Install .net 6.0, then in a console:
 
 ```
-dotnet run
-dotnet run all
-dotnet run <day>
-dotnet run <day> <part>
+dotnet run -- runs the latest solution
+dotnet run all -- runs all of the solutions
+dotnet run <day> -- runs a solution for a specific day
+dotnet run <day> <part> -- runs a solution for a specific day and part
 ```
