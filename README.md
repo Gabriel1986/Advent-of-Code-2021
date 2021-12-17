@@ -12,6 +12,9 @@ dotnet run
 ```
 
 Additional parameters for dotnet run:
+
 `all` - Runs all of the solutions
+
 `<day>` - Runs the solutions for a specific day
+
 `<day> <part>` - Runs the solution for a specific part of a specific day
