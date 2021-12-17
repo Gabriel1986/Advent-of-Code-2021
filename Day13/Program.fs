@@ -1,7 +1,6 @@
 ﻿/// https://adventofcode.com/2021/day/13
 module Day13
 open System
-open System.Collections.Generic
 
 type FoldInstruction =
     | XAxis of int
