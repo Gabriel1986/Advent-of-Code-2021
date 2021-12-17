@@ -67,7 +67,7 @@ let part1 () =
 
     let shortestPath = performShortestPathAlgorithm (maze, Node.Create (0, 0, None, maze), Node.Create (maxI, maxJ, None, maze))
 
-    printfn "Shortest path weight: %i" shortestPath
+    printfn "Day 15 - Part 1 - Shortest path weight: %i" shortestPath
 
 let private expand (maze: int[,]): int[,] =
     Array2D.init ((maze.GetUpperBound(0) + 1) * 5) ((maze.GetUpperBound(1) + 1) * 5) (fun i j ->
@@ -86,4 +86,4 @@ let part2 () =
     let maxJ = expandedMaze.GetUpperBound 1
 
     let shortestPath = performShortestPathAlgorithm (expandedMaze, Node.Create (0, 0, None, expandedMaze), Node.Create (maxI, maxJ, None, expandedMaze))
-    printfn "Shortest path weight: %i" shortestPath
+    printfn "Day 14 - Part 2 - Shortest path weight: %i" shortestPath

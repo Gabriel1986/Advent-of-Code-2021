@@ -68,7 +68,7 @@ let part1 () =
         | Operator o ->
             packet.Version + (o |> Seq.sumBy sumOfVersions)
 
-    printfn "Sum of versions: %i" (sumOfVersions rootPacket)
+    printfn "Day 16 - Part 1 - Sum of versions: %i" (sumOfVersions rootPacket)
 
 let part2 () =
     let rootPacket = readPackets (readInput (), [], None) |> List.head
@@ -88,4 +88,4 @@ let part2 () =
             | 7 -> if calculatedSubPackets[0] = calculatedSubPackets[1] then 1 else 0
             | other -> failwithf "Unexpected typeId: %i" other
 
-    printfn "Result of packet calculation: %i" (calculatePacket rootPacket)
+    printfn "Day 16 - Part 2 - Result of packet calculation: %i" (calculatePacket rootPacket)
