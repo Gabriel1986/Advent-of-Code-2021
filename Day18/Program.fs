@@ -112,15 +112,13 @@ let private trySplit (str: string) =
     | None ->
         None
 
-let rec tryExplodeAndSplit (str: string) =
-    str
-    |> tryExplode
-    |> Option.orElse (trySplit str)
-    |> Option.map (tryExplodeAndSplit)
-    |> Option.defaultValue str
+let rec tryExplodeOrSplit (str: string) =
+    match str |> tryExplode |> Option.orElse (trySplit str) with
+    | Some explodedOrSplit -> tryExplodeOrSplit explodedOrSplit
+    | None -> str
 
 let private addNode (str: string) (next: string) =
-    tryExplodeAndSplit $"[{str},{next}]"
+    tryExplodeOrSplit $"[{str},{next}]"
 
 let calculateMagnitude (str: string) =
     let rec calculateMagnitude (node: Node) =
