@@ -79,6 +79,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Compile Include="Day18\Program.fs" />
+    <Content Include="Day19\Input.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="Day19\Program.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
