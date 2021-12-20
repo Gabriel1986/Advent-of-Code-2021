@@ -19,8 +19,8 @@ let enhance (enhancer: string) (image: char[][]) (iteration: int) =
     let originalMaxJ = image[0].Length - 1
 
     [|
-        for i in -3..originalMaxI+3 do [|
-            for j in -3..originalMaxJ+3 do
+        for i in -1..originalMaxI+1 do [|
+            for j in -1..originalMaxJ+1 do
                 let square = String [|
                     for squareI in -1..1 do
                         for squareJ in -1..1 do
