@@ -69,6 +69,9 @@ let private hasSplit (str: string) =
     let m = Regex.Match(str, "\d\d")
     if m.Success then Some m.Value else None
 
+let private findLastNumberRegex = new Regex("\d+", RegexOptions.RightToLeft ||| RegexOptions.Compiled)
+let private findFirstNumberRegex = new Regex("\d+", RegexOptions.Compiled)
+
 let private tryExplode (str: string) =
     match hasExplosion str with
     | Some explosion ->
@@ -79,21 +82,19 @@ let private tryExplode (str: string) =
 
         let firstPart =
             let partial = str[0..explosion[0]-1]
-            let m = Regex.Matches(partial, "\d+")
-            if m.Count > 0 then
-                let toReplace = Int32.Parse(m[m.Count-1].Value)
-                let regex = new Regex("\d+", RegexOptions.RightToLeft)
-                regex.Replace(partial, string (toReplace + leftValue), 1)
+            let m = findLastNumberRegex.Match(partial)
+            if m.Success then
+                let toReplace = Int32.Parse(m.Value)
+                findLastNumberRegex.Replace(partial, string (toReplace + leftValue), 1)
             else
                 partial
 
         let secondPart =
             let partial = str[explosion[1]+1..]
-            let m = Regex.Match(partial, "\d+")
+            let m = findFirstNumberRegex.Match(partial)
             if m.Success then
                 let toReplace = Int32.Parse(m.Value)
-                let regex = new Regex("\d+")
-                regex.Replace(partial, string (toReplace + rightValue), 1)
+                findFirstNumberRegex.Replace(partial, string (toReplace + rightValue), 1, m.Index)
             else
                 partial
 
