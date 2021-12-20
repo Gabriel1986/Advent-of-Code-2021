@@ -14,7 +14,7 @@ let private readInput (): string * char[][] =
             |]
         |]
 
-let enhance (times: int) (enhancer: string, image: char[][]) =
+let private enhance (times: int) (enhancer: string, image: char[][]) =
     let enhance (image: char[][]) (iteration: int) =
         let originalMaxI = image.Length - 1
         let originalMaxJ = image[0].Length - 1
@@ -40,14 +40,18 @@ let enhance (times: int) (enhancer: string, image: char[][]) =
     seq { 1..times }
     |> Seq.fold enhance image
 
+let readLitPixels (image: char[][]) =
+    image
+    |> Array.sumBy (Array.sumBy (function '#' -> 1 | _ -> 0))
+
 let part1 () =
     readInput ()
     |> enhance 2
-    |> Array.sumBy (Array.sumBy (function '#' -> 1 | _ -> 0))
+    |> readLitPixels
     |> printfn "Day 20 - Part 1 - Nb lit pixels: %i"
 
 let part2 () =
     readInput ()
     |> enhance 50
-    |> Array.sumBy (Array.sumBy (function '#' -> 1 | _ -> 0))
+    |> readLitPixels
     |> printfn "Day 20 - Part 2 - Nb lit pixels: %i"
